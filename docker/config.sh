@@ -15,9 +15,9 @@ KITTI_ROOT=/root/kitti
 LOGDIR=/root/logdir
 
 # Workspace structure on host machine
-HOST_PCDET_ROOT=/path/to/pcdet
-HOST_NUSC_ROOT=/path/to/nuscenes
-HOST_CADC_ROOT=/path/to/cadc
-HOST_KITTI_ROOT=/path/to/kitti
-HOST_LOGDIR=/path/to/logdir
+HOST_PCDET_ROOT=/home/anthony/Documents/OpenPCDet
+HOST_NUSC_ROOT=/media/diskstation/datasets/nuScenes
+HOST_CADC_ROOT=/media/diskstation/datasets/cadcd
+HOST_KITTI_ROOT=/media/diskstation/datasets/KITTI
+HOST_LOGDIR=/home/anthony/Documents/OpenPCDet/log
 

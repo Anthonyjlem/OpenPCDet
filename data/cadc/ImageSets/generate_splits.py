@@ -22,20 +22,23 @@ paths = glob.glob('../201*/**/*.bin', recursive=True)
 samples = numpy.array([[x.split('/')[-6], x.split('/')[-5], x.split('/')[-1].rstrip('.bin')] for x in paths])
 
 # This will create a random split instead of using the preselected train val split
-CREATE_RANDOM = False
+CREATE_RANDOM = True
 
 if CREATE_RANDOM:
   indices = numpy.random.permutation(samples.shape[0])
-  split = int(samples.shape[0] * 0.8)
-  training_idx, val_idx = indices[:split], indices[split:]
-  training, val = samples[training_idx], samples[val_idx]
+  train_split = int(samples.shape[0] * 0.70)
+  val_split = int(samples.shape[0] * 0.85)
+  training_idx, val_idx, test_idx = indices[:train_split], indices[train_split:val_split], indices[val_split:]
+  training, val, test = samples[training_idx], samples[val_idx], samples[test_idx]
 
   with open("train.txt", "w") as f:
     for idx in training:
       f.write("%s %s %s\n" % (idx[0], idx[1], idx[2]))
-
   with open("val.txt", "w") as f:
     for idx in val:
+      f.write("%s %s %s\n" % (idx[0], idx[1], idx[2]))
+  with open("test.txt", "w") as f:
+    for idx in test:
       f.write("%s %s %s\n" % (idx[0], idx[1], idx[2]))
 else:
   with open("train.txt", "w") as f_train:
